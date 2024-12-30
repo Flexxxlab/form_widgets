@@ -1,6 +1,6 @@
 name: form_widgets
 description: "Additional form widgets for Flutter. Including checkbox form widget."
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/Flexxxlab/form_widgets
 
 environment:

@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
 
+/// A [Widget] that contains a [TextFormField] that is clickable.
 class ClickableTextFormWidget extends StatefulWidget {
+  /// The label text to display inside the [TextFormField].
   final String? labelText;
+
+  /// The controller for the [TextFormField].
   final TextEditingController? controller;
+
+  /// The validator for the [TextFormField].
   final String? Function(String?)? validator;
-  final void Function()? onPressed;
-  const ClickableTextFormWidget(
-      {super.key,
-      this.labelText,
-      this.controller,
-      this.validator,
-      this.onPressed});
+
+  /// The callback function to be called when the [TextButton] is pressed.
+  final VoidCallback? onPressed;
+
+  /// Creates a [ClickableTextFormWidget].
+  const ClickableTextFormWidget({
+    super.key,
+    this.labelText,
+    this.controller,
+    this.validator,
+    this.onPressed,
+  });
 
   @override
   State<ClickableTextFormWidget> createState() =>

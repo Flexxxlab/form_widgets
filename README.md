@@ -1,39 +1,69 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Form Widgets
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+This package provides custom form widgets for Flutter applications.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+## Widgets
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+### CheckboxFormField
 
-## Features
+A `FormField` that contains a `CheckboxListTile`.
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+#### Properties
 
-## Getting started
+- `title`: The title widget to display next to the checkbox.
+- `onSaved`: Called when the form is saved.
+- `validator`: Called to validate the form field.
+- `initialValue`: The initial value of the checkbox.
+- `onChanged`: Called when the value of the checkbox changes.
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+### ClickableTextFormWidget
+
+A custom widget that combines a `TextFormField` with a `TextButton`.
+
+#### Properties
+
+- `labelText`: The label text to display inside the `TextFormField`.
+- `controller`: The controller for the `TextFormField`.
+- `validator`: The validator for the `TextFormField`.
+- `onPressed`: The callback function to be called when the `TextButton` is pressed.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+To use these widgets, import the package and include them in your form:
 
 ```dart
-const like = 'sample';
+import 'package:form_widgets/checkbox_form_widget.dart';
+import 'package:form_widgets/clickable_text_form_widget.dart';
+
+...
+
+CheckboxFormField(
+  title: Text('Accept Terms'),
+  onSaved: (value) {
+    // Save value
+  },
+  validator: (value) {
+    if (value == false) {
+      return 'You must accept the terms';
+    }
+    return null;
+  },
+  onChanged: (value) {
+    // Handle change
+  },
+),
+
+ClickableTextFormWidget(
+  labelText: 'Click me',
+  controller: TextEditingController(),
+  validator: (value) {
+    if (value == null || value.isEmpty) {
+      return 'This field cannot be empty';
+    }
+    return null;
+  },
+  onPressed: () {
+    // Handle button press
+  },
+),
 ```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.

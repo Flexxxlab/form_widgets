@@ -38,38 +38,46 @@ import 'package:form_widgets/clickable_text_form_widget.dart';
 ...
 
 CheckboxFormField(
-  title: Text('Accept Terms'),
-  onSaved: (value) {
-    // Save value
-  },
+  initialValue: false,
+  onChanged: (value) {},
+  title: const Text('Terms and Conditions'),
   validator: (value) {
-    if (value == false) {
+    if (value == null || value == false) {
       return 'You must accept the terms';
     }
     return null;
   },
-  onChanged: (value) {
-    // Handle change
-  },
 ),
 
+DateTime? _selectedDateTime;
+final _dateController = TextEditingController();
 ClickableTextFormWidget(
-  labelText: 'Click me',
-  controller: TextEditingController(),
-  validator: (value) {
-    if (value == null || value.isEmpty) {
-      return 'This field cannot be empty';
-    }
-    return null;
-  },
+  labelText: 'Date',
+  controller: _dateController,
+  validator: (value) =>
+      value == null || value.isEmpty ? 'Please select a date' : null,
   onPressed: () {
-    // Handle button press
+    showDatePicker(
+      context: context,
+      initialDate: _selectedDateTime ?? DateTime.now(),
+      firstDate: _selectedDateTime ?? DateTime.now(),
+      lastDate: DateTime(2100),
+    ).then((value) {
+      if (value != null) {
+        setState(() {
+          _selectedDateTime = value;
+          _dateController.text =
+              '${value.day}/${value.month}/${value.year}';
+        });
+      }
+    });
   },
-),
+);
 ```
 
 ## ScreenShots
-![Screenshot_1735602505](https://github.com/user-attachments/assets/2b415162-83d3-471a-b280-289f91ebcecc)
-![Screenshot_1735602511](https://github.com/user-attachments/assets/26c76ac2-4f36-4935-8748-06c76bf592b1)
-![Screenshot_1735602524](https://github.com/user-attachments/assets/19e8d96b-0ea6-492f-859d-131a7c2e3625)
+![Screenshot_1735602505](https://github.com/user-attachments/assets/e5de47a4-a8ff-403e-949d-e563a43cee63)
+![Screenshot_1735602511](https://github.com/user-attachments/assets/c83c3847-2fd2-4357-b502-2eb149069ffd)
+![Screenshot_1735602524](https://github.com/user-attachments/assets/2418ae63-298e-4dec-bbfb-b91c120beb79)
+
 

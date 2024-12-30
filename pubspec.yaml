@@ -1,0 +1,19 @@
+name: form_widgets
+description: "Additional form widgets for Flutter. Including checkbox form widget."
+version: 1.0.0
+repository: https://github.com/Flexxxlab/form_widgets
+
+environment:
+  sdk: ^3.6.0
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
